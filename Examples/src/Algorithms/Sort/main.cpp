@@ -2,9 +2,10 @@
 #include <vector>
 #include "compare.hpp"
 
+
 int main(){
   using namespace std;
-  
+
   // ************** compare
   vector<std::string> s(6);
   s[0]="Apple";
@@ -13,7 +14,7 @@ int main(){
   s[3]="milKshake";
   s[4]="APPLE";
   s[5]="Milk";
-  
+
   // useless : it is the default!!
   cout<<" Normal sort (case sensitive)"<<endl;
   std::sort(s.begin(),s.end(),CaseCompare());
@@ -29,16 +30,16 @@ int main(){
     cout<<*i<<" ";
   cout<<endl;
 
-  
+
   cout<< " Now using lambdas"<<endl;
-  
+
   s[0]="Apple";
   s[1]="applejuice";
   s[2]="milk";
   s[3]="milKshake";
   s[4]="APPLE";
   s[5]="Milk";
-  
+
   // useless : it is the default!!
   std::sort(s.begin(),s.end(),[](string const & a, string const &b){return a<b;});
   cout<<" Normal sort (case sensitive)"<<endl;
@@ -50,7 +51,7 @@ int main(){
   {
     // Lexycografic comparison
     for(decltype(a.size()) i=0;i<std::min(a.size(),b.size()); ++i){
-      if (std::toupper(a[i])!= std::toupper(b[i])) 
+      if (std::toupper(a[i])!= std::toupper(b[i]))
 	return std::toupper(a[i])<std::toupper(b[i]);
     }
     return (a.size()<b.size());
@@ -64,14 +65,14 @@ int main(){
 #if __cplusplus > 201103L
 
   cout<< " Now using C++14 lambdas"<<endl;
-  
+
   s[0]="Apple";
   s[1]="applejuice";
   s[2]="milk";
   s[3]="milKshake";
   s[4]="APPLE";
   s[5]="Milk";
-  
+
   // useless : it is the default!!
   std::sort(s.begin(),s.end(),[](auto const & a, auto const &b){return a<b;});
   cout<<" Normal sort (case sensitive)"<<endl;
@@ -83,7 +84,7 @@ int main(){
   {
     // Lexycografic comparison
     for(decltype(a.size()) i=0;i<std::min(a.size(),b.size()); ++i){
-      if (std::toupper(a[i])!= std::toupper(b[i])) 
+      if (std::toupper(a[i])!= std::toupper(b[i]))
 	return std::toupper(a[i])<std::toupper(b[i]);
     }
     return (a.size()<b.size());

@@ -9,10 +9,11 @@ matrix
 {
 
 private :
-  
+
   std::vector<double> data;
   const unsigned int rows;
   const unsigned int cols;
+
 
   inline
   unsigned int
@@ -23,6 +24,12 @@ private :
   double &
   index (unsigned int irow, unsigned int jcol)
   { return data[sub2ind (irow, jcol)]; };
+
+  std::vector<matrix> factorize(matrix & const);
+  matrix inverse_lambda();
+  matrix backward(matrix & const)const;
+  matrix forward(matrix & const)const;
+  void uniformize();
 
   const double &
   const_index (unsigned int irow, unsigned int jcol) const
@@ -39,8 +46,10 @@ public :
     : rows (rows_), cols (cols_)
   { data.resize (rows * cols, 0.0); };
 
-  matrix (matrix const &) = default;  
-  
+  matrix (matrix const &) = default;
+
+  matrix solve(matrix const &);
+
   unsigned int
   get_rows () const { return rows; }
 
@@ -65,9 +74,18 @@ public :
   matrix
   transpose () const;
 
+  void printmat()const{
+    for( unsigned i = 0;i<rows;i++){
+      for (unsigned j = 0;j<cols;j++){
+        std::cout<<const_index(i,j)<<std::endl;
+      }
+    }
+  }
+
+
   void
   solve (matrix &rhs);
-  
+
 };
 
 /// matrix x matrix product : C = A * B

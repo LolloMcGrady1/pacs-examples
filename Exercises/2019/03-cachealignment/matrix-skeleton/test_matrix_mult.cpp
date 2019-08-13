@@ -14,10 +14,25 @@ int main ()
     }
 
   std::cout << "msize = " << msize << std::endl;
-  
+  // matrix A(2);
+  // matrix B(2);
+  // B(1,0) = 4;
+  // B(0,1) = 5;
+  // B(1,1) = 9;
+  // B(0,0) = 15;
+  // A(1,0) = 6;
+  // A(0,1) = 23;
+  // A(1,1) = 56;
+  // A(0,0) = 90;
+
+
   tic ();
+  // matrix a = A.transpose();
   matrix C = A * B;
   toc ("multiply_time = ");
+  //C.printmat();
+
+
 
   return 0;
 }

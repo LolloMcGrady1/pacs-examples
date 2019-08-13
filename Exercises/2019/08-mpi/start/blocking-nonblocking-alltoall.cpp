@@ -42,15 +42,34 @@ main (int argc, char *argv[])
   }
 
   // MPI_Alltoall is much simpler!
-  if (0) {
+  if (1) {
+    MPI_Alltoall(MPI_IN_PLACE,0,0,&recvbuff[0],1,MPI_INT,MPI_COMM_WORLD);
+    for (int i = 0;i<size;i++){
+    if (rank==i)
+  {
+    for (auto ii : recvbuff )
+    std::cout << ii << " ";
+  std::cout << std::endl;
+}
+}
     //
   }
 
    // MPI_Allgather is much simpler!
-  if (1) {
+  if (0) {
+
+    MPI_Allgather(&sendbuff,1,MPI_INT,&recvbuff[0],1,MPI_INT,MPI_COMM_WORLD); //Passo puntatore al vettore che sto riempiendo
+    for (int i = 0;i<size;i++){
+      if (rank==i)
+    {
+      for (auto ii : recvbuff )
+      std::cout << ii << " ";
+    std::cout << std::endl;
+  }
+}
     //
   }
-  
+
   for (int irank = 0; irank < size; ++irank) {
     if (rank == irank) {
       std::cout << " rank " << rank << " received messages ";
@@ -60,7 +79,7 @@ main (int argc, char *argv[])
     }
     MPI_Barrier (MPI_COMM_WORLD);
   }
-  
+
   MPI_Finalize ();
   return 0;
 }

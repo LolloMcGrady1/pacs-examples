@@ -9,7 +9,7 @@ namespace Globals
   Must be defined elsewhere. It would have been better to create a namespace
   (see below)
  */
-extern int globalValue;
+/*extern*/const int globalValue(10);
 //! Declaration of a global stuct that may represent global parameters of a program
 /*!
     It is a good practice to use namespaces. In this case the global variable
@@ -20,7 +20,7 @@ extern int globalValue;
     bool negate;
     double g2;
   };
-  
+
   //! A namespace variable with external linkage: only declared!
   /*!  Must be defined elsewhere, typically in the correspining source
     file.  This variable will be available to all translation units

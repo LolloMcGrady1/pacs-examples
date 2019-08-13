@@ -25,7 +25,7 @@ static double fun3(double x)
 //! External linkage (default)
 double fun (double y)
 {
-  // I can use fun2 and fun3 here since thet are in the 
+  // I can use fun2 and fun3 here since thet are in the
   // same translation unit
   // I also use the namespace global struct
   double value=fun2(y)*fun3(y)*Globals::globalParameters.g2;
@@ -34,5 +34,4 @@ double fun (double y)
   return value;
 }
 
-void zeroGlobal(){ Globals::globalValue=0;}
-
+//zeroGlobal(){ Globals::globalValue=0;}
